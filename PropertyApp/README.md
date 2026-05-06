@@ -193,35 +193,5 @@ Handles all UI logic using the browser's `localStorage` as a client-side data st
 | File I/O (`BufferedReader/Writer`) | Server-side data persistence (`properties.txt`) |
 
 ---
+`http://localhost:8080/PropertyApp/`.
 
-## Common Viva Questions
-
-**Q: What design pattern does this project use?**
-A: MVC (Model-View-Controller). Models are `Property` and `Agent`, Views are the HTML pages, Controllers are the Servlets, and `PropertyService` is the service/business layer.
-
-**Q: Why is there no database?**
-A: Data is stored in a plain text file (`properties.txt`) using Java file I/O (`BufferedReader` and `BufferedWriter`). Each property is one comma-separated line.
-
-**Q: What is a Servlet?**
-A: A Java class that extends `HttpServlet` and handles HTTP requests (GET/POST). It is registered with the server using the `@WebServlet` annotation and runs inside a servlet container like Jetty or Tomcat.
-
-**Q: What is the role of `PropertyService`?**
-A: It is the service layer that contains all the business logic and file operations. Servlets delegate data tasks to this class rather than handling file I/O themselves — this separates concerns.
-
-**Q: How does `toFileString()` / `fromFileString()` work?**
-A: `toFileString()` serializes a `Property` object into a comma-separated string for writing to file. `fromFileString()` splits a line by comma and reconstructs the object — this is a simple manual serialization approach.
-
-**Q: What does `mvn jetty:run` do?**
-A: Maven uses the Jetty plugin defined in `pom.xml` to compile the project and start an embedded web server on port 8080, making the app accessible at `http://localhost:8080/PropertyApp/`.
-
-**Q: What is localStorage?**
-A: A browser API that stores key-value data persistently in the browser (survives page refresh). This project uses it so the HTML pages work as standalone local files without needing the Java server running.
-
-**Q: What is the difference between `doGet` and `doPost`?**
-A: `doGet` handles HTTP GET requests (e.g. loading a page via URL). `doPost` handles HTTP POST requests (e.g. form submissions). All servlets in this project use `doPost` because they receive form data.
-
-**Q: What is the `@WebServlet` annotation?**
-A: It maps a URL path to a servlet class automatically, without needing a `web.xml` configuration file. For example, `@WebServlet("/AddPropertyServlet")` means the servlet responds to requests at that URL.
-
-**Q: What happens when two properties have the same ID?**
-A: The frontend (`main.js`) checks for duplicate IDs before saving and shows an alert. On the backend, `addProperty()` simply appends without checking — so duplicate prevention is a frontend responsibility in this project.
