@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Property Details | Real Estate Portal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background-color:#f5f7fa;
+        }
+
+        .navbar{
+            background-color:#1a3c5e;
+        }
+
+        .property-container{
+            max-width:1000px;
+            margin:40px auto;
+        }
+
+        .property-card{
+            border:none;
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .property-image{
+            width:100%;
+            height:420px;
+            object-fit:cover;
+        }
+
+        .property-info{
+            padding:30px;
+        }
+
+        .price{
+            font-size:32px;
+            font-weight:bold;
+            color:#1a3c5e;
+        }
+
+        .badge-custom{
+            background-color:#1a3c5e;
+            font-size:14px;
+            padding:8px 14px;
+        }
+
+        .section-title{
+            color:#1a3c5e;
+            font-weight:600;
+            margin-top:25px;
+        }
+
+        .btn-custom{
+            background-color:#1a3c5e;
+            border:none;
+        }
+
+        .btn-custom:hover{
+            background-color:#16324f;
+        }
+
+        .info-box{
+            background-color:#f8f9fa;
+            border-radius:10px;
+            padding:15px;
+            margin-top:15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-dark px-4 py-3">
+
+    <a class="navbar-brand fw-bold" href="index.html">
+        🏠 Real Estate Portal
+    </a>
+
+    <div>
+        <a href="properties.html" class="btn btn-outline-light btn-sm">
+            Back to Properties
+        </a>
+    </div>
+
+</nav>
+
+<!-- PROPERTY DETAILS -->
+
+<div class="container property-container">
+
+    <div class="card property-card">
+
+        <!-- IMAGE -->
+
+        <img
+                src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+                class="property-image"
+                alt="Property Image"
+        >
+
+        <!-- INFO -->
+
+        <div class="property-info">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <div>
+
+                    <h2 class="fw-bold" id="propertyTitle">
+                        Loading...
+                    </h2>
+
+                    <span class="badge badge-custom" id="propertyType">
+                        PROPERTY TYPE
+                    </span>
+
+                </div>
+
+                <div class="price" id="propertyPrice">
+                    $0
+                </div>
+
+            </div>
+
+            <!-- LOCATION -->
+
+            <div class="info-box">
+
+                <h5 class="section-title">
+                    Location
+                </h5>
+
+                <p class="mb-1" id="propertyLocation">
+                    Loading location...
+                </p>
+
+            </div>
+
+            <!-- DESCRIPTION -->
+
+            <div class="mt-4">
+
+                <h5 class="section-title">
+                    Description
+                </h5>
+
+                <p class="text-muted" id="propertyDescription">
+                    Loading description...
+                </p>
+
+            </div>
+
+            <!-- AGENT INFO -->
+
+            <div class="info-box mt-4">
+
+                <h5 class="section-title">
+                    Agent Information
+                </h5>
+
+                <p class="mb-1">
+                    <strong>Name:</strong>
+                    <span id="agentName">Loading...</span>
+                </p>
+
+                <p class="mb-1">
+                    <strong>Agency:</strong>
+                    <span id="agencyName">Loading...</span>
+                </p>
+
+                <p class="mb-0">
+                    <strong>Contact:</strong>
+                    <span id="agentContact">Loading...</span>
+                </p>
+
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="d-flex gap-3 mt-4">
+
+                <button class="btn btn-custom text-white px-4">
+                    Add to Favorites
+                </button>
+
+                <button class="btn btn-outline-primary px-4">
+                    Send Inquiry
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    // TEMPORARY PROPERTY ID
+
+    const propertyId = 1;
+
+    fetch(`http://localhost:8080/api/properties/${propertyId}`)
+
+        .then(response => response.json())
+
+        .then(property => {
+
+            // TITLE
+
+            document.getElementById("propertyTitle").innerText =
+                property.title;
+
+            // PRICE
+
+            document.getElementById("propertyPrice").innerText =
+                "$" + property.price;
+
+            // TYPE
+
+            document.getElementById("propertyType").innerText =
+                property.type;
+
+            // DESCRIPTION
+
+            document.getElementById("propertyDescription").innerText =
+                property.description;
+
+            // LOCATION
+
+            if(property.location)
+            {
+                document.getElementById("propertyLocation").innerText =
+                    property.location.city + ", " +
+                    property.location.district;
+            }
+
+            // AGENT INFO
+
+            if(property.agent)
+            {
+                document.getElementById("agentName").innerText =
+                    property.agent.userName;
+
+                document.getElementById("agencyName").innerText =
+                    property.agent.agencyName;
+
+                document.getElementById("agentContact").innerText =
+                    property.agent.contactNumber;
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            document.getElementById("propertyTitle").innerText =
+                "Failed to load property";
+
+        });
+
+</script>
+
+</body>
+</html>
