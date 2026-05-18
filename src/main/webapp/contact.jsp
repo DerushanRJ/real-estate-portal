@@ -1,9 +1,10 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Real Estate Portal</title>
+
+    <title>Contact Agent | Real Estate Portal</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -12,9 +13,9 @@
             background-color: #f8f9fa;
         }
 
-        .login-card {
-            max-width: 450px;
-            margin: 100px auto;
+        .contact-card {
+            max-width: 650px;
+            margin: 70px auto;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
@@ -39,44 +40,52 @@
 <body>
 
 <div class="container">
-    <div class="card login-card">
+
+    <div class="card contact-card">
 
         <div class="card-header text-center">
-            <h3 class="mb-0">Welcome Back</h3>
-            <p class="mb-0 mt-1 opacity-75">Login to your account</p>
+            <h3 class="mb-0">Contact Agent</h3>
+            <p class="mb-0 mt-1 opacity-75">
+                Send your inquiry directly
+            </p>
         </div>
 
         <div class="card-body p-4">
 
-            <form action="user" method="post">
-
-                <input type="hidden" name="action" value="login">
+            <form action="contact" method="post">
 
                 <div class="mb-3">
-                    <label class="form-label fw-semibold">Email Address</label>
-                    <input type="email" name="email" class="form-control" placeholder="john@email.com" required>
+                    <label class="form-label fw-semibold">Your Name</label>
+                    <input type="text" name="name" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label fw-semibold">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                    <label class="form-label fw-semibold">Email Address</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Subject</label>
+                    <input type="text" name="subject" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Message</label>
+                    <textarea name="message" rows="5" class="form-control"></textarea>
                 </div>
 
                 <div class="d-grid mt-4">
                     <button type="submit" class="btn btn-primary btn-lg">
-                        Login
+                        Send Message
                     </button>
                 </div>
 
             </form>
 
-            <p class="text-center mt-3 mb-0">
-                Don't have an account?
-                <a href="register.jsp">Register here</a>
-            </p>
-
         </div>
+
     </div>
+
 </div>
 
 </body>
