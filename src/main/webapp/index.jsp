@@ -65,7 +65,7 @@
             <a href="register.jsp" class="btn btn-light btn-lg me-3 px-4">Get Started</a>
             <a href="login.jsp" class="btn btn-outline-light btn-lg px-4">Login</a>
         <% } else { %>
-            <a href="#listings" class="btn btn-light btn-lg px-4">Browse Listings</a>
+        <a href="property-list.jsp" class="btn btn-primary">View Listings</a>
         <% } %>
     </div>
 </div>
