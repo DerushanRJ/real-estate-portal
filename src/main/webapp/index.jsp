@@ -85,9 +85,9 @@
             <div class="col-md-2">
                 <div class="card feature-card p-4 text-center">
                     <div class="feature-icon">🏡</div>
-                    <h5 class="fw-bold">Properties</h5>
-                    <p class="text-muted">Browse and manage available properties.</p>
-                    <a href="updateProperty.html" class="btn btn-primary mt-2 w-100">View Properties</a>
+                    <h5 class="fw-bold">Add Property</h5>
+                    <p class="text-muted">List a new property for sale or rent.</p>
+                    <a href="updateProperty.html" class="btn btn-primary mt-2 w-100">Add </a>
                 </div>
             </div>
             <div class="col-md-2">
