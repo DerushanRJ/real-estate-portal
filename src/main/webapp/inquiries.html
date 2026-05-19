@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Inquiry | Real Estate Portal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background-color:#f5f7fa;
+        }
+
+        .navbar{
+            background-color:#1a3c5e;
+        }
+
+        .inquiry-card{
+            max-width:700px;
+            margin:50px auto;
+            border:none;
+            border-radius:15px;
+            box-shadow:0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-header{
+            background-color:#1a3c5e;
+            color:white;
+            padding:20px;
+            border-radius:15px 15px 0 0 !important;
+        }
+
+        .btn-custom{
+            background-color:#1a3c5e;
+            border:none;
+        }
+
+        .btn-custom:hover{
+            background-color:#16324f;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-dark px-4 py-3">
+
+    <a class="navbar-brand fw-bold" href="index.html">
+        🏠 Real Estate Portal
+    </a>
+
+</nav>
+
+<!-- INQUIRY FORM -->
+
+<div class="container">
+
+    <div class="card inquiry-card">
+
+        <div class="card-header">
+            <h3 class="mb-0">
+                Send Property Inquiry
+            </h3>
+        </div>
+
+        <div class="card-body p-4">
+
+            <form id="inquiryForm">
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Buyer ID
+                    </label>
+
+                    <input
+                            type="number"
+                            class="form-control"
+                            id="buyerId"
+                            required
+                    >
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Property ID
+                    </label>
+
+                    <input
+                            type="number"
+                            class="form-control"
+                            id="propertyId"
+                            required
+                    >
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Message
+                    </label>
+
+                    <textarea
+                            class="form-control"
+                            rows="5"
+                            id="message"
+                            required
+                    ></textarea>
+
+                </div>
+
+                <div class="d-grid">
+
+                    <button
+                            type="submit"
+                            class="btn btn-custom text-white btn-lg"
+                    >
+                        Send Inquiry
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div
+                    class="alert alert-success mt-4 d-none"
+                    id="successMessage"
+            >
+                Inquiry sent successfully!
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    document.getElementById("inquiryForm")
+
+        .addEventListener("submit", function(event)
+        {
+
+            event.preventDefault();
+
+            const inquiryData =
+            {
+                buyer:
+                {
+                    userID:
+                        document.getElementById("buyerId").value
+                },
+
+                property:
+                {
+                    id:
+                        document.getElementById("propertyId").value
+                },
+
+                message:
+                    document.getElementById("message").value
+            };
+
+            fetch("http://localhost:8080/api/inquiries",
+            {
+                method: "POST",
+
+                headers:
+                {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(inquiryData)
+            })
+
+            .then(response => response.json())
+
+            .then(data =>
+            {
+                document
+                    .getElementById("successMessage")
+                    .classList
+                    .remove("d-none");
+
+                document
+                    .getElementById("inquiryForm")
+                    .reset();
+            })
+
+            .catch(error => console.error(error));
+
+        });
+
+</script>
+
+</body>
+</html>
