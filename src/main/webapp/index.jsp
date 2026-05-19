@@ -73,8 +73,8 @@
 <div class="services-section" id="services">
     <div class="container">
         <h2 class="text-center fw-bold mb-4">What would you like to do?</h2>
-        <div class="row g-4">
-            <div class="col-md-3">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-2">
                 <div class="card feature-card p-4 text-center">
                     <div class="feature-icon">👤</div>
                     <h5 class="fw-bold">My Profile</h5>
@@ -82,7 +82,7 @@
                     <a href="profile.jsp" class="btn btn-primary mt-2 w-100">Go to Profile</a>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card feature-card p-4 text-center">
                     <div class="feature-icon">🏡</div>
                     <h5 class="fw-bold">Properties</h5>
@@ -90,7 +90,15 @@
                     <a href="updateProperty.html" class="btn btn-primary mt-2 w-100">View Properties</a>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
+                <div class="card feature-card p-4 text-center">
+                    <div class="feature-icon">🔎</div>
+                    <h5 class="fw-bold">View Property</h5>
+                    <p class="text-muted">Search and view detailed property listings.</p>
+                    <a href="property-list.jsp" class="btn btn-primary mt-2 w-100">View Listing</a>
+                </div>
+            </div>
+            <div class="col-md-2">
                 <div class="card feature-card p-4 text-center">
                     <div class="feature-icon">🧑‍💼</div>
                     <h5 class="fw-bold">Seller Dashboard</h5>
@@ -98,7 +106,7 @@
                     <a href="seller_dashboard.jsp" class="btn btn-primary mt-2 w-100">Go to Dashboard</a>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card feature-card p-4 text-center">
                     <div class="feature-icon">📩</div>
                     <h5 class="fw-bold">Inquiries</h5>
