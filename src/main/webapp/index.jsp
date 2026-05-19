@@ -26,12 +26,10 @@
             height: 100%;
         }
         .feature-card:hover { transform: translateY(-4px); }
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 16px; }
         .btn-primary { background-color: #1a3c5e; border-color: #1a3c5e; }
         .btn-primary:hover { background-color: #16324f; }
+        .services-section { background-color: #eaf1fb; padding: 60px 0; }
         footer { background-color: #1a3c5e; color: white; padding: 24px 0; }
     </style>
 </head>
@@ -65,10 +63,53 @@
             <a href="register.jsp" class="btn btn-light btn-lg me-3 px-4">Get Started</a>
             <a href="login.jsp" class="btn btn-outline-light btn-lg px-4">Login</a>
         <% } else { %>
-        <a href="property-list.jsp" class="btn btn-primary">View Listings</a>
+            <a href="#services" class="btn btn-light btn-lg px-4">Explore Services</a>
         <% } %>
     </div>
 </div>
+
+<!-- Services Navigation Section (only shown when logged in) -->
+<% if (loggedIn != null) { %>
+<div class="services-section" id="services">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">What would you like to do?</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card feature-card p-4 text-center">
+                    <div class="feature-icon">👤</div>
+                    <h5 class="fw-bold">My Profile</h5>
+                    <p class="text-muted">View and update your account details.</p>
+                    <a href="profile.jsp" class="btn btn-primary mt-2 w-100">Go to Profile</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card feature-card p-4 text-center">
+                    <div class="feature-icon">🏡</div>
+                    <h5 class="fw-bold">Properties</h5>
+                    <p class="text-muted">Browse and manage available properties.</p>
+                    <a href="updateProperty.html" class="btn btn-primary mt-2 w-100">View Properties</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card feature-card p-4 text-center">
+                    <div class="feature-icon">🧑‍💼</div>
+                    <h5 class="fw-bold">Seller Dashboard</h5>
+                    <p class="text-muted">Manage your listings as a seller.</p>
+                    <a href="seller_dashboard.jsp" class="btn btn-primary mt-2 w-100">Go to Dashboard</a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card feature-card p-4 text-center">
+                    <div class="feature-icon">📩</div>
+                    <h5 class="fw-bold">Inquiries</h5>
+                    <p class="text-muted">Send and manage property inquiries.</p>
+                    <a href="inquiries.html" class="btn btn-primary mt-2 w-100">View Inquiries</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
 
 <!-- Features Section -->
 <div class="container my-5">
