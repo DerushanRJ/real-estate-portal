@@ -1,2 +1,4 @@
-ea947c9f|Ocean View Apartment|Beautiful ocean view apartment in the heart of Colombo.|5.0E7|Apartment|Colombo|U3219EEB1
-2f984266|New Town Apartment|Modern apartment near city center|1420.0|Apartment|colombo|U96B31DB0
+ea947c9f|Ocean View Apartment|Beautiful ocean view apartment in the heart of Colombo.|50000000|Apartment|Colombo|U3219EEB1
+2f984266|New Town Apartment|Modern apartment near city center.|14200000|Apartment|Colombo|U96B31DB0
+8bc912ad|Luxury Skyline Apartment|Luxury apartment with skyline views and rooftop pool.|32000000|Apartment|Colombo 07|U96B31DB0
+7fd125ae|Lake Side Apartment|Peaceful lakeside apartment with modern interior.|27500000|Apartment|Kandy|U3219EEB1
