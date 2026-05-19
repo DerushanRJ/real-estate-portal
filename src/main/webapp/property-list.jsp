@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.realestate.realestateportal.model.Property" %>
 <%@ page import="com.realestate.realestateportal.service.PropertyService" %>
@@ -5,6 +6,13 @@
 <%
     PropertyService propertyService = new PropertyService();
     List<Property> properties = propertyService.getAllProperties();
+
+    String[] images = {
+            "Apartment1.jpg",
+            "Apartment2.jpg",
+            "Apartment3.jpg",
+            "Apartment4.jpg"
+    };
 %>
 
 <!DOCTYPE html>
@@ -25,30 +33,58 @@
         .page-header {
             background: linear-gradient(135deg, #1a3c5e 0%, #2d6a9f 100%);
             color: white;
-            padding: 60px 0;
-            margin-bottom: 40px;
+            padding: 70px 0;
+            margin-bottom: 50px;
         }
 
         .property-card {
             border: none;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
             height: 100%;
+            background: white;
         }
 
         .property-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+        }
+
+        .card-img-top {
+            height: 230px;
+            object-fit: cover;
         }
 
         .price {
             color: #1a3c5e;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
         .badge-custom {
             background-color: #1a3c5e;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary {
+            background-color: #1a3c5e;
+            border-color: #1a3c5e;
+            padding: 10px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #16324f;
+            border-color: #16324f;
+        }
+
+        .card-body p {
+            color: #555;
         }
     </style>
 </head>
@@ -57,7 +93,9 @@
 <div class="page-header text-center">
     <div class="container">
         <h1 class="fw-bold">Available Properties</h1>
-        <p class="lead">Browse our latest property listings</p>
+        <p class="lead">
+            Discover luxury apartments and premium living spaces
+        </p>
     </div>
 </div>
 
@@ -65,34 +103,49 @@
 
     <div class="row g-4">
 
-        <% for(Property property : properties) { %>
+        <%
+            for(int i = 0; i < properties.size(); i++) {
+
+                Property property = properties.get(i);
+        %>
 
         <div class="col-md-6 col-lg-4">
 
-            <div class="card property-card p-3">
+            <div class="card property-card">
 
-                <div class="card-body">
+                <!-- Property Image -->
+                <img src="images/<%= images[i % images.length] %>"
+                     class="card-img-top"
+                     alt="Property Image">
 
+                <div class="card-body p-4">
+
+                    <!-- Property Type -->
                     <span class="badge badge-custom mb-3">
                         <%= property.getType() %>
                     </span>
 
-                    <h4 class="fw-bold">
+                    <!-- Property Title -->
+                    <h4 class="fw-bold mb-2">
                         <%= property.getTitle() %>
                     </h4>
 
+                    <!-- Location -->
                     <p class="text-muted mb-2">
-                       Location: <%= property.getLocation() %>
+                        Location: <%= property.getLocation() %>
                     </p>
 
-                    <p>
+                    <!-- Description -->
+                    <p class="mb-3">
                         <%= property.getDescription() %>
                     </p>
 
-                    <div class="price mb-3">
+                    <!-- Price -->
+                    <div class="price mb-4">
                         $<%= String.format("%,.0f", property.getPrice()) %>
                     </div>
 
+                    <!-- Contact Button -->
                     <a href="contact.jsp" class="btn btn-primary w-100">
                         Contact Agent
                     </a>
