@@ -78,9 +78,3 @@ public String toFileString() {
 | **Delete** | `profile.jsp` → `UserServlet` → `UserService.deleteUser()` | Delete account — removes line from users.txt |
 
 ---
-
-
-
-4. Run `RealEstatePortalApplication.java`
-
-5. Open browser and go to:
